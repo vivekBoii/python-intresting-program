@@ -4,7 +4,7 @@ from playsound import playsound
 from threading import Thread
  
 def music():
-    playsound(r"C:\Users\yadav\OneDrive\Desktop\vivek\notifier\uncle.mp3")
+    playsound(r"/home/vivek/Desktop/Javascript Projects/python-intresting-program/notifier/uncle.mp3")
 
 
 def notify(): 
@@ -12,20 +12,23 @@ def notify():
         title = "Drink Water",
         message="Stay Hydrated" ,
         app_name="Health Notifier",
-        app_icon=r"C:\Users\yadav\OneDrive\Desktop\vivek\notifier\drink-water.ico",
+        app_icon=r"/home/vivek/Desktop/Javascript Projects/python-intresting-program/notifier/drink-water.ico",
         # displaying time
         timeout=15,
         toast=False
     )
 
-t1=Thread(target=music)
-t1.start()
+while True:
+    t2=Thread(target=notify)
+    t1=Thread(target=music)
+    t2.start()
+    t1.start()
 
-t2=Thread(target=notify)
-t2.start()
 
-# waiting time
-time.sleep(60*60)
+    # waiting time
+    time.sleep(20*60)
 
 # $ pythonw.exe .\notifier.py  
 # that it run in window 
+
+# pyinstaller --onefile --hidden-import plyer.platforms.linux.notification filename.py 
